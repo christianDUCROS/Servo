@@ -34,7 +34,7 @@ class servo() :
                 self.servo.duty_u16(val_duty_cycle)
                 time.sleep_ms(self.vitesse)
         else :
-            for i in range (angle,self.angle_init,-1) :
+            for i in range (self.angle_init,angle,-1) :
                 val_duty_cycle = map_range(i,self.angle_min,self.angle_max,self.duty_cycle_min,self.duty_cycle_max)
                 self.servo.duty_u16(val_duty_cycle)
                 time.sleep_ms(self.vitesse)
