@@ -4,8 +4,7 @@ paramètre vitesse de déplacement
 tempo(ms) entre chaque degre lors du déplacement
 angle de départ = 0
 
-import servo 
-servo0 = servo.servo (0,-90,90,800,3100,10)  #broche,angle_min,angle_max,duty_cycle_min,duty_cycle_max,vitesse=0
+
 
 '''
 
@@ -18,7 +17,7 @@ def map_range(x, in_min, in_max, out_min, out_max):
 class servo() :
     def __init__(self,broche,angle_min,angle_max,duty_cycle_min,duty_cycle_max,vitesse=0) :
         self.servo = PWM(Pin(broche))        
-        self.servo.freq(20)
+        self.servo.freq(50)
         self.duty_cycle_min = duty_cycle_min
         self.duty_cycle_max = duty_cycle_max
         self.angle_min = angle_min
@@ -39,3 +38,14 @@ class servo() :
                 self.servo.duty_u16(val_duty_cycle)
                 time.sleep_ms(self.vitesse)
         self.angle_init = angle
+
+        
+def main() : 
+    import servo 
+    servo0 = servo.servo (0,-90,90,2000,7500,10)  #broche,angle_min,angle_max,duty_cycle_min,duty_cycle_max,vitesse=0
+    valeur_angle = 150     
+    servo0.rotation(valeur_angle)
+
+        
+if __name__ == __main__:
+    main()
